@@ -1,0 +1,19 @@
+#Deploy the pod
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: nodered/node-red-docker:latest
+        ports:
+          - containerPort: 1880
+        imagePullPolicy: IfNotPresent
+---

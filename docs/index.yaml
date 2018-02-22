@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  node-red-chart:
+  - apiVersion: v1
+    created: 2018-02-22T16:28:37.432161278+07:00
+    description: A Helm chart for Kubernetes
+    digest: 61e08e76c858f616996f5274e1962bf428baf86f1fe082ad192326e3afcbb828
+    name: node-red-chart
+    urls:
+    - https://iknowplus.github.io/iknowpluscharts/node-red-chart-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-02-22T16:28:37.431812561+07:00

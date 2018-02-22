@@ -1,0 +1,17 @@
+#Deploy the service
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  selector:
+    app: {{ .Release.Name }}
+  ports:
+  - protocol: TCP
+    port: 1880
+    targetPort: 1880
+  type: NodePort
+  externalTrafficPolicy: Cluster
+---
