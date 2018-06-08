@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: dashboard-mongo
+  name: dashboard-mongo
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: dashboard-mongo
+    spec:
+      containers:
+      - env:
+        - name: NO_USED
+          value: "1"
+        image: hyperledger/cello-mongo
+        name: cello-dashboard-mongo
+        resources: {}
+        volumeMounts:
+        - mountPath: /data/db
+          name: dashboard-mongo-claim0
+      restartPolicy: Always
+      volumes:
+      - name: dashboard-mongo-claim0
+        persistentVolumeClaim:
+          claimName: dashboard-mongo-claim0
+status: {}

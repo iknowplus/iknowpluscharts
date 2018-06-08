@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.1.0 (36652f6)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: watchdog
+  name: watchdog
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: watchdog
+    spec:
+      containers:
+      - env:
+        - name: DEBUG
+        - name: LOG_LEVEL
+          value: "INFO"
+        - name: MONGODB_PORT
+          value: "27017"
+        - name: MONGO_DB
+          value: dev
+        - name: MONGO_HOST
+          value: mongo
+        - name: MONGO_URL
+          value: mongodb://mongo:27017
+        image: hyperledger/cello-watchdog
+        name: cello-watchdog
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}
-        image: nodered/node-red-docker:latest
+        image: palaphon/nodered:0.18.7
         ports:
           - containerPort: 1880
         imagePullPolicy: IfNotPresent
